@@ -31,6 +31,7 @@ class Scatter(Object.Object):
 	POINT_SIZE: float = 8.0
 	CONNECT: bool = True
 	CONNECT_COLOR: typing.List[float] = [.4, .4, .4]
+	COLOR_MAP: str = 'colorful'										# other option is 'grey_scale'
 	
 	def __init__(self, x: typing.List[float], y: typing.List[float]):
 		
@@ -68,7 +69,10 @@ class Scatter(Object.Object):
 		for yy, Vertex in zip(self.y, screenVertices):
 			
 			sig = sigmoid(yy, self.minY, self.maxY)
-			OpenGL.GL.glColor3d(sig, 1 - sig, .0)
+
+			if self.COLOR_MAP == 'colorful':		OpenGL.GL.glColor3d(sig, 1 - sig, .0)
+			
+			elif self.COLOR_MAP == 'grey_scale':	OpenGL.glColor3d(sig, sig, sig)
 
 			OpenGL.GL.glVertex3d(Vertex.x, Vertex.y, -.01)
 		
