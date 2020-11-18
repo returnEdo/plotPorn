@@ -72,7 +72,7 @@ class Scatter(Object.Object):
 
 			if self.COLOR_MAP == 'colorful':		OpenGL.GL.glColor3d(sig, 1 - sig, .0)
 			
-			elif self.COLOR_MAP == 'grey_scale':	OpenGL.glColor3d(sig, sig, sig)
+			elif self.COLOR_MAP == 'grey_scale':	OpenGL.GL.glColor3d(sig, sig, sig)
 
 			OpenGL.GL.glVertex3d(Vertex.x, Vertex.y, -.01)
 		
